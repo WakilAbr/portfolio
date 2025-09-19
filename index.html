@@ -1,23 +1,362 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon premier site</title>
+    <title>Portfolio Abderrahmane Wakil</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #111;
+            color: #fff;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 40px;
+            padding: 30px 0 0 0;
+            font-size: 15px;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .navbar a:hover {
+            opacity: 1;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #222;
+        }
+        .title-block {
+            flex: 1;
+        }
+        .title-block h1 {
+            font-size: 2.1em;
+            margin: 0;
+            font-weight: 700;
+        }
+        .title-block h2 {
+            font-size: 1.3em;
+            margin: 8px 0 0 0;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        .title-block .intro {
+            font-size: 1em;
+            margin: 18px 0 0 0;
+            opacity: 0.8;
+        }
+        .cv-btn {
+            display: inline-block;
+            margin-top: 18px;
+            background: #19c37d;
+            color: #fff;
+            padding: 8px 22px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+        .cv-btn:hover {
+            background: #15a86a;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.7em;
+            margin: 70px 0 20px 0;
+            font-weight: 700;
+        }
+        .about-desc {
+            text-align: center;
+            font-size: 1em;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        .about-infos {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        .about-info {
+            text-align: center;
+        }
+        .about-info span {
+            display: block;
+            font-size: 0.95em;
+            opacity: 0.7;
+        }
+        .about-info strong {
+            display: block;
+            margin-top: 6px;
+            font-size: 1em;
+        }
+        .about-info .icon {
+            font-size: 1.3em;
+            margin-bottom: 4px;
+            color: #19c37d;
+        }
+        .what-i-do {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .do-block {
+            background: #181818;
+            border-radius: 8px;
+            width: 220px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #fff;
+            box-shadow: 0 2px 12px #0002;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .do-block:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 6px 24px #0004;
+        }
+        .do-block .icon {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+        }
+        .do-block .desc {
+            font-size: 0.95em;
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+        .skills {
+            background: #181818;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 30px 0;
+            margin-bottom: 60px;
+        }
+        .skill-block {
+            text-align: center;
+            width: 120px;
+        }
+        .skill-block span {
+            color: #19c37d;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .skill-block .desc {
+            font-size: 0.95em;
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+            background: none;
+        }
+        .contact-form form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .contact-form input, .contact-form textarea {
+            background: #181818;
+            border: none;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 1em;
+            width: 48%;
+        }
+        .contact-form textarea {
+            width: 100%;
+            min-height: 70px;
+            resize: vertical;
+        }
+        .contact-form button {
+            background: #19c37d;
+            color: #fff;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: 600;
+            margin: 18px auto 0 auto;
+            display: block;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .contact-form button:hover {
+            background: #15a86a;
+            transform: scale(1.05);
+        }
+        .confirmation {
+            text-align: center;
+            color: #19c37d;
+            font-size: 1.1em;
+            margin-top: 18px;
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0 10px 0;
+            font-size: 1em;
+            opacity: 0.5;
+        }
+        @media (max-width: 700px) {
+            .header, .about-infos, .what-i-do, .skills {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            .skills span {
+                margin: 10px 0;
+            }
+            .contact-form input {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenue sur mon site</h1>
-    <p>Ceci est mon premier paragraphe en HTML.</p>
-    <a href="https://github.com">Visitez mon GitHub</a>
-    <hr>
-    <h2>Mes compétences :</h2>
-    <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Python</li>
-    </ul>
-    <img src="https://votresite/photo.jpg" alt="Photo de profil">
-    <footer>
-        <p>© 2025 - Mon portfolio</p>
-    </footer>
+    <div class="container">
+        <nav class="navbar">
+            <a href="#">Projets</a>
+            <a href="#">Stages</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="header">
+            <div class="title-block">
+                <h1>ABDERRAHMANE<br>Wakil</h1>
+                <h2>Etudiant en BTS SIO</h2>
+                <div class="intro">Passionné par l'informatique, la cybersécurité et le développement web. Je conçois des solutions innovantes et sécurisées pour répondre aux besoins des entreprises.</div>
+                <a class="cv-btn" href="img/CV Abderrahmane Wakil.png" target="_blank">Voir le CV</a>
+                <div style="margin-top:18px;">
+                    <a href="https://github.com/WakilAbr" target="_blank" title="GitHub" style="margin-right:12px;"><img src="img/github logo.jpg" alt="GitHub" style="width:28px;vertical-align:middle;border-radius:6px;"></a>
+                    <a href="mailto:abderrahmanewakil@gmail.com" title="Email" style="margin-right:12px;"><img src="img/logo mail.jpg" alt="Email" style="width:28px;vertical-align:middle;border-radius:6px;"></a>
+                    <a href="tel:0698985310" title="Téléphone" style="margin-right:12px;"><img src="img/logo téléphone.jpg" alt="Téléphone" style="width:28px;vertical-align:middle;border-radius:6px;"></a>
+                    <a href="https://www.linkedin.com/in/abderrahmanewakil" target="_blank" title="LinkedIn"><img src="img/logo linked in.jpg" alt="LinkedIn" style="width:28px;vertical-align:middle;border-radius:6px;"></a>
+                </div>
+            </div>
+            <img class="profile-pic" src="img/Photo de profil.png" alt="Photo de profil">
+        </div>
+
+        <div class="section-title">À propos</div>
+        <div class="about-desc">
+            Jeune étudiant en BTS SIO (Services informatiques aux organisations), spécialité SISR (Solutions Infrastructures Systèmes et Réseaux).<br>
+            <br>
+            Passionné par la sécurité informatique, le développement web et l’administration réseau, je suis motivé à apprendre et à relever de nouveaux défis. Mon objectif est de devenir un professionnel polyvalent, capable de concevoir, sécuriser et maintenir des systèmes informatiques performants.<br>
+            <br>
+            J’aime collaborer, partager mes connaissances et m’investir dans des projets innovants.
+        </div>
+        <div class="about-infos">
+            <div class="about-info">
+                <div class="icon">👤</div>
+                <span>ABDERRAHMANE</span>
+                <strong>Wakil</strong>
+            </div>
+            <div class="about-info">
+                <div class="icon">✉️</div>
+                <span>abderrahmanewakil@gmail.com</span>
+                <strong>Email</strong>
+            </div>
+            <div class="about-info">
+                <div class="icon">📍</div>
+                <span>Brive-La-Gaillarde</span>
+                <strong>Ville</strong>
+            </div>
+            <div class="about-info">
+                <div class="icon">📞</div>
+                <span>06 98 98 53 10</span>
+                <strong>Téléphone</strong>
+            </div>
+        </div>
+
+        <div class="section-title">Ce que je fais</div>
+        <div class="what-i-do">
+            <div class="do-block">
+                <div class="icon">🟩 DEV</div>
+                Développement
+                <div class="desc">Création de sites web modernes, applications dynamiques et outils sur mesure. Maîtrise des langages front-end et back-end.</div>
+            </div>
+            <div class="do-block">
+                <div class="icon">🛡️</div>
+                Réseau
+                <div class="desc">Gestion, sécurisation et optimisation des réseaux informatiques. Installation de serveurs, routage et surveillance.</div>
+            </div>
+        </div>
+
+        <div class="section-title">Mes Compétences</div>
+        <div class="skills">
+            <div class="skill-block">
+                <span>HTML</span>
+                <div class="desc">Structuration et mise en page de contenus web accessibles et responsives.</div>
+            </div>
+            <div class="skill-block">
+                <span>ROUTAGE</span>
+                <div class="desc">Configuration de routeurs, VLAN, sécurité réseau et optimisation du trafic.</div>
+            </div>
+            <div class="skill-block">
+                <span>Github</span>
+                <div class="desc">Gestion de versions, collaboration sur des projets, déploiement et documentation.</div>
+            </div>
+            <div class="skill-block">
+                <span>PHP</span>
+                <div class="desc">Développement de scripts serveur, gestion de bases de données et création d’API.</div>
+            </div>
+        </div>
+
+        <div class="section-title">Prendre contact</div>
+        <div class="contact-form">
+            <form id="contactForm" autocomplete="off">
+                <input type="text" placeholder="Prénom" name="prenom" required>
+                <input type="text" placeholder="Nom" name="nom" required>
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="text" placeholder="Téléphone" name="telephone">
+                <textarea placeholder="Message" name="message" required></textarea>
+                <button type="submit">Soumettre</button>
+            </form>
+            <div class="confirmation" id="confirmationMsg">Merci pour votre message ! Je vous répondrai rapidement.</div>
+        </div>
+        <footer>
+            © 2025 - Abderrahmane Wakil | Portfolio professionnel
+        </footer>
+    </div>
+    <script>
+    // Confirmation message for contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('confirmationMsg').style.display = 'block';
+        setTimeout(function() {
+            document.getElementById('confirmationMsg').style.display = 'none';
+            document.getElementById('contactForm').reset();
+        }, 3500);
+    });
+    </script>
+    </div>
 </body>
 </html>
